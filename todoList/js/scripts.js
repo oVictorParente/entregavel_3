@@ -1,28 +1,74 @@
-// Clase
+// Classe
 
 class ToDo {
+  Texto = ""
+  Prioridade = ""
+  Feito = false
+  constructor(texto, prioridade) {
+    this.Texto = texto
+    this.Prioridade = prioridade
+  }
 
 }
 
 // Array
-
+let arrayTodos = []
 
 //funções projeto
 
-function CriarToDo() {
+function CriarToDo(texto, prioridade, arrayTodos) {
+  let objetoTodo = new ToDo (texto, Number(prioridade))
 
+  let toDoInserido = arrayTodos.some(todo => todo === objetoTodo);
+
+    if(toDoInserido === false) {
+      
+      arrayTodos.push(objetoTodo);
+
+      return objetoTodo;
+    }
 }
 
-function AtualizarToDo() {
+function AtualizarToDo(textoAntigo, textoNovo, arrayTodos) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
+    if(arrayTodos[i].Texto === textoAntigo) {
+
+      textoAntigo = textoNovo
+
+      return true;
+    }
+  }
+
+  return false;
 }
 
-function ConcluirToDo() {
+function ConcluirToDo(arrayTodos, texto) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
+    if(arrayTodos[i].Texto === texto) {
+
+      arrayTodos[i].Feito = !arrayTodos[i].Feito
+
+      return true;
+    } 
+  }
+
+  return false;
 }
 
-function ExcluirToDo() {
+function ExcluirToDo(arrayTodos, texto) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
+    if(arrayTodos[i].Texto === texto) {
+
+      arrayTodos.splice(i, 1)
+
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function PesquisarToDo() {
