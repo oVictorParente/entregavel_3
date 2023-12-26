@@ -12,29 +12,29 @@ class ToDo {
 }
 
 // arrayTodos
-let arrayTodosTodos = [];
+let arrayTodos = [];
 
 //funções projeto
 
-function CriarToDo(texto, prioridade, arrayTodosTodos) {
+function CriarToDo(texto, prioridade, arrayTodos) {
   let objetoTodo = new ToDo (texto, prioridade)
 
-  let toDoInserido = arrayTodosTodos.some(todo => todo.Texto === objetoTodo.Texto);
+  let toDoInserido = arrayTodos.some(todo => todo.Texto === objetoTodo.Texto);
 
     if(toDoInserido === false) {
       
-      arrayTodosTodos.push(objetoTodo);
+      arrayTodos.push(objetoTodo);
 
       return objetoTodo;
     }
 }
 
-function AtualizarToDo(textoAntigo, textoNovo, arrayTodosTodos) {
-  for(let i = 0; i < arrayTodosTodos.length; i++) {
+function AtualizarToDo(textoAntigo, textoNovo, arrayTodos) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
-    if(arrayTodosTodos[i].Texto === textoAntigo) {
+    if(arrayTodos[i].Texto === textoAntigo) {
 
-      arrayTodosTodos[i].Texto = textoNovo;
+      arrayTodos[i].Texto = textoNovo;
 
       return true;
     }
@@ -43,12 +43,12 @@ function AtualizarToDo(textoAntigo, textoNovo, arrayTodosTodos) {
   return false;
 }
 
-function ConcluirToDo(arrayTodosTodos, texto) {
-  for(let i = 0; i < arrayTodosTodos.length; i++) {
+function ConcluirToDo(arrayTodos, texto) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
-    if(arrayTodosTodos[i].Texto === texto) {
+    if(arrayTodos[i].Texto === texto) {
 
-      arrayTodosTodos[i].Feito = !arrayTodosTodos[i].Feito;
+      arrayTodos[i].Feito = !arrayTodos[i].Feito;
 
       return true;
     } 
@@ -57,12 +57,12 @@ function ConcluirToDo(arrayTodosTodos, texto) {
   return false;
 }
 
-function ExcluirToDo(arrayTodosTodos, texto) {
-  for(let i = 0; i < arrayTodosTodos.length; i++) {
+function ExcluirToDo(arrayTodos, texto) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
-    if(arrayTodosTodos[i].Texto === texto) {
+    if(arrayTodos[i].Texto === texto) {
 
-      arrayTodosTodos.splice(i, 1);
+      arrayTodos.splice(i, 1);
 
       return true;
     }
@@ -71,10 +71,10 @@ function ExcluirToDo(arrayTodosTodos, texto) {
   return false;
 }
 
-function PesquisarToDo(arrayTodosTodos, texto) {
-  for(let i = 0; i < arrayTodosTodos.length; i++) {
+function PesquisarToDo(arrayTodos, texto) {
+  for(let i = 0; i < arrayTodos.length; i++) {
 
-    if(arrayTodosTodos[i].Texto === texto) {
+    if(arrayTodos[i].Texto === texto) {
 
       return true;
     }
