@@ -1,40 +1,40 @@
 // Classe
 
 class ToDo {
-  Texto = ""
-  Prioridade = ""
+  Texto
+  Prioridade
   Feito = false
   constructor(texto, prioridade) {
-    this.Texto = texto
-    this.Prioridade = prioridade
+    this.Texto = texto;
+    this.Prioridade = prioridade;
   }
 
 }
 
-// Array
-let arrayTodos = []
+// arrayTodos
+let arrayTodosTodos = [];
 
 //funções projeto
 
-function CriarToDo(texto, prioridade, arrayTodos) {
-  let objetoTodo = new ToDo (texto, Number(prioridade))
+function CriarToDo(texto, prioridade, arrayTodosTodos) {
+  let objetoTodo = new ToDo (texto, prioridade)
 
-  let toDoInserido = arrayTodos.some(todo => todo === objetoTodo);
+  let toDoInserido = arrayTodosTodos.some(todo => todo.Texto === objetoTodo.Texto);
 
     if(toDoInserido === false) {
       
-      arrayTodos.push(objetoTodo);
+      arrayTodosTodos.push(objetoTodo);
 
       return objetoTodo;
     }
 }
 
-function AtualizarToDo(textoAntigo, textoNovo, arrayTodos) {
-  for(let i = 0; i < arrayTodos.length; i++) {
+function AtualizarToDo(textoAntigo, textoNovo, arrayTodosTodos) {
+  for(let i = 0; i < arrayTodosTodos.length; i++) {
 
-    if(arrayTodos[i].Texto === textoAntigo) {
+    if(arrayTodosTodos[i].Texto === textoAntigo) {
 
-      textoAntigo = textoNovo
+      arrayTodosTodos[i].Texto = textoNovo;
 
       return true;
     }
@@ -43,12 +43,12 @@ function AtualizarToDo(textoAntigo, textoNovo, arrayTodos) {
   return false;
 }
 
-function ConcluirToDo(arrayTodos, texto) {
-  for(let i = 0; i < arrayTodos.length; i++) {
+function ConcluirToDo(arrayTodosTodos, texto) {
+  for(let i = 0; i < arrayTodosTodos.length; i++) {
 
-    if(arrayTodos[i].Texto === texto) {
+    if(arrayTodosTodos[i].Texto === texto) {
 
-      arrayTodos[i].Feito = !arrayTodos[i].Feito
+      arrayTodosTodos[i].Feito = !arrayTodosTodos[i].Feito;
 
       return true;
     } 
@@ -57,12 +57,12 @@ function ConcluirToDo(arrayTodos, texto) {
   return false;
 }
 
-function ExcluirToDo(arrayTodos, texto) {
-  for(let i = 0; i < arrayTodos.length; i++) {
+function ExcluirToDo(arrayTodosTodos, texto) {
+  for(let i = 0; i < arrayTodosTodos.length; i++) {
 
-    if(arrayTodos[i].Texto === texto) {
+    if(arrayTodosTodos[i].Texto === texto) {
 
-      arrayTodos.splice(i, 1)
+      arrayTodosTodos.splice(i, 1);
 
       return true;
     }
@@ -71,15 +71,27 @@ function ExcluirToDo(arrayTodos, texto) {
   return false;
 }
 
-function PesquisarToDo() {
- 
+function PesquisarToDo(arrayTodosTodos, texto) {
+  for(let i = 0; i < arrayTodosTodos.length; i++) {
+
+    if(arrayTodosTodos[i].Texto === texto) {
+
+      return true;
+    }
+  }
+
+  return false; 
 }
 
-function OrdenarCrescente() {
-  
+function OrdenarCrescente(arrayTodos) {
+  arrayTodos.sort((a, b) => a.Prioridade - b.Prioridade);
+
+  return arrayTodos;
 }
-function OrdenarDecrescente() {
-  
+function OrdenarDecrescente(arrayTodos) {
+  arrayTodos.sort((a, b) => b.Prioridade - a.Prioridade);
+
+  return arrayTodos;
 }
 
 // Seleção de elementos
